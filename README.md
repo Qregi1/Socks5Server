@@ -1,1 +1,5 @@
 # Socks5Server
+在epoll.h和epoll.cc中实现一个EpollServer类
+然后再socks5.h和socks5.h中实现一个SocksServer类,继承EpollServer类
+SocksServer类实现解析客户端的请求,并处理读事件和写事件
+Transfer.cc和.h,珠要是实现一个TransferServer类.主要对数据进行加密
