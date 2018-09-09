@@ -1,5 +1,21 @@
 # Socks5Server
-在epoll.h和epoll.cc中实现一个EpollServer类
-然后再socks5.h和socks5.h中实现一个SocksServer类,继承EpollServer类
-SocksServer类实现解析客户端的请求,并处理读事件和写事件
-Transfer.cc和.h,珠要是实现一个TransferServer类.主要对数据进行加密
+
+代理服务器
+类图如下:
+
+实现一个EpollServer类作为父类
+然后再实现一个SocksServer类作为子类直接继承EpollServer类
+SocksServer类处理业务:
+1. 对客户端身份认证
+2. 和客户端建立连接
+3. 进入转发模式, 把客户端的请求转发给外网具体的服务器, 再把服务器的响应转发给请求客户端
+
+实现一个TransferServer类.主要对数据进行加密解密
+因为外网的请求可能会被墙, 实现一个加密解密之后被墙的次数很少
+
+如何使用:
+
+
+项目缺点:
+目前只支持ipv4协议, 对于ipv6协议暂时还不支持, 而且传输层采用TCP协议, 对于一些采用UDP协议的网站可能访问不了
+
